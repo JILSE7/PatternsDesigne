@@ -23,7 +23,7 @@ code {
 }
 
 .main-layout img{
-  width: 170px;
+  width: 70px;
 }
 
 nav {
@@ -32,7 +32,7 @@ nav {
   margin-right: 15px;
   overflow-y: none;
   text-align: center;
-  width: 2500px;
+  width: 250px;
 }
 nav ul {
   align-items: center;

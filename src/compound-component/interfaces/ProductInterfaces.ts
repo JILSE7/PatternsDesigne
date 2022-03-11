@@ -1,6 +1,8 @@
 export interface IPropsProductCardComponent {
     product: IProduct,
-    children: JSX.Element | JSX.Element[]
+    children: JSX.Element | JSX.Element[],
+    className?: string,
+    style?: React.CSSProperties
   }
   
   export interface IProduct {
@@ -10,20 +12,35 @@ export interface IPropsProductCardComponent {
   }
   
   export interface IProductButtonsProps {
+    className?:string,
+    style?: React.CSSProperties
+ 
+  }
+
+  export interface IProductImageProps {
+    img?:string, 
+    className?:string,
+    style?: React.CSSProperties
+  }
+
+  export interface IProductTitleProps {
+    title?: string, 
+    className?:string,
+    style?: React.CSSProperties
+  }
+  
+
+  export interface IProductContext {
+    product: IProduct,
     counter: number,
-    increasyBy: (increment:number)=> void
+    increasyBy: (increment:number)=> void,
   }
-  
-  
-  
-  export interface IProductContext  extends IProductButtonsProps{
-    product: IProduct
-  }
+
 
 
 export interface ProductCardHOCProps{
     ({ product, children }: IPropsProductCardComponent):JSX.Element;
-    Title: ({ title }: { title?: string}) => JSX.Element;
-    Image: ({ img }: { img?: string }) => JSX.Element;
-    Buttons: () => JSX.Element;
+    Title: (Props: IProductTitleProps) => JSX.Element;
+    Image: (Props: IProductImageProps) => JSX.Element;
+    Buttons: (Props:IProductButtonsProps) => JSX.Element;
 }
