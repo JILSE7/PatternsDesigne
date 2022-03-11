@@ -8,8 +8,7 @@ const product = {
 
 const product2 = {
   id:'1',
-  nameProduct: "coffe card",
-
+  nameProduct: "coffe card opt",
 }
 
 
