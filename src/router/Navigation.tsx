@@ -3,14 +3,14 @@ import { BrowserRouter,Routes, Route, Navigate } from 'react-router-dom'
 import Nav from '../compound-component/components/Nav'
 import About from '../screens/About'
 import Users from '../screens/Users';
-import ShoppingPage from '../compound-component/pages/ShoppingPage';
+import ShoppingPageRefactor from '../compound-component/pages/ShoppingPageRefactor';
 
 const Navigation = () => {
   return (
     <BrowserRouter>
         <Nav>
         <Routes>
-            <Route path="/" element={<ShoppingPage/>} />
+            <Route path="/" element={<ShoppingPageRefactor/>} />
             <Route path="about" element={<About />} />
             <Route path="users" element={<Users />} />
 

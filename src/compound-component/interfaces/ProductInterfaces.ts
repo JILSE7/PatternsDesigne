@@ -2,13 +2,22 @@ export interface IPropsProductCardComponent {
     product: IProduct,
     children: JSX.Element | JSX.Element[],
     className?: string,
-    style?: React.CSSProperties
+    style?: React.CSSProperties,
+    value?:number,
+    onChange?:(args:IOnChangeArgs) => void,
+  }
+
+
+  export interface IOnChangeArgs {
+    product: IProduct,
+    count: number
   }
   
   export interface IProduct {
     id: string
     nameProduct: string,
     img?: string,
+    
   }
   
   export interface IProductButtonsProps {

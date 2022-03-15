@@ -9,10 +9,11 @@ import { IProductContext, IPropsProductCardComponent } from '../../interfaces/Pr
 export const ProductContext = createContext({} as IProductContext);
 const {Provider} = ProductContext;
 
-export const ProductCard = ({product, children, className, style}:IPropsProductCardComponent) => {
+export const ProductCard = ({product, children, className, style, onChange, value}:IPropsProductCardComponent) => {
     
+  
 
-  const {counter, increasyBy} = useCount()
+  const {counter, increasyBy} = useCount({onChange, product,value})
 
   return (
     <Provider value={{counter, increasyBy, product}}>

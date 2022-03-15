@@ -1,66 +1,16 @@
-import { useState } from 'react';
 import ProductCard from '../components/ProductCardComponents/';
-import { IProduct, IOnChangeArgs } from '../interfaces/ProductInterfaces';
+import { IProduct} from '../interfaces/ProductInterfaces';
 import '../styles/custom-styles.css';
+import useShoppingCart from '../hooks/useShoppingCart';
 
 
-const product = {
-  id:'1',
-  nameProduct: "coffe card",
-  img: "/coffee-mug.png"
-}
-
-const product2 = {
-  id:'2',
-  nameProduct: "coffe card opt",
-  img: "/coffee-mug2.png"
-}
-
-let products:IProductShoppingCart[] = [product, product2];
 
 
-interface IProductShoppingCart extends IProduct{
-  count?: number
-}
 
-const ShoppingPage = () => {
+const ShoppingPageRefactor = () => {
 
-  //{[key]:{propuct}}
-  const [shoppingCart, setshoppingCart] = useState<{[key:string]:IProductShoppingCart}>({});
 
-  const handleCartChange = ({product,count}:IOnChangeArgs) => {
-    
-/*    products = products.map(pro => {
-     if(pro.id === product.id){
-       pro.count = count
-     }
-
-     return pro;
-   })  */
-
-    if(count === 0){
-      //1 WAY
-      const {[product.id]:eliminar, ...rest} = shoppingCart
-
-      setshoppingCart({...rest});
-      return;
-      //SECOND WAY
-     /*  const newCart = {...shoppingCart}
-      delete newCart[product.id]
-
-      setshoppingCart({...newCart})
-      return; */
-    }
-
-    //Construyendo el nuevo articulo
-    const newArticle:IProductShoppingCart = {
-      ...product,
-         count
-    }
-
-    setshoppingCart({...shoppingCart, [product.id]: newArticle});
-  }
-
+    const {products,shoppingCart,handleCartChange} = useShoppingCart()
 
   return (
     <div >
@@ -81,7 +31,7 @@ const ShoppingPage = () => {
         })}
         
       </div>
-      
+      {/*MOSTRAR CARRITO */}
       <div className='shopping-center'>
         {
           Object.entries(shoppingCart).map((product,i) => {
@@ -96,11 +46,9 @@ const ShoppingPage = () => {
         }
       </div>
       
-        {
 
-        }
     </div>
   )
 }
 
-export default ShoppingPage
+export default ShoppingPageRefactor;
