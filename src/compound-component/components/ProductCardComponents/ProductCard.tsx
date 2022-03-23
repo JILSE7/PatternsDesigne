@@ -9,19 +9,21 @@ import { IProductContext, IPropsProductCardComponent } from '../../interfaces/Pr
 export const ProductContext = createContext({} as IProductContext);
 const {Provider} = ProductContext;
 
-export const ProductCard = ({product, children, className, style, onChange, value}:IPropsProductCardComponent) => {
+export const ProductCard = ({product, children, className, style, onChange, value, initialValues}:IPropsProductCardComponent) => {
     
   
 
-  const {counter, increasyBy} = useCount({onChange, product,value})
+  const {counter, increasyBy, maxCount, isMaxCountReached, reset} = useCount({onChange, product,value, initialValues})
 
   return (
-    <Provider value={{counter, increasyBy, product}}>
+    <Provider value={{counter, increasyBy, product, maxCount}}>
       
         <div className={`${styles.productCard} ${className}`} style={style}>
 
             {
-              children
+           
+                  children({count:counter,increasyBy,isMaxCountReached,maxCount: maxCount!, reset, product})
+               
             }
 
         </div>

@@ -48,6 +48,7 @@
     padding-top: 5px;
     text-align: center;
     width: 30px;
+    color: black;
 }
 
 .buttonAdd {
@@ -61,4 +62,11 @@
 
 .buttonAdd:hover {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.disabled {
+    border-color: grey !important;
+    border-left: 1px solid white !important;
+    color: grey !important;
 }

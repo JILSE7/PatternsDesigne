@@ -1,10 +1,17 @@
 export interface IPropsProductCardComponent {
     product: IProduct,
-    children: JSX.Element | JSX.Element[],
+/*     children: JSX.Element | JSX.Element[], */
+    children: (args: PorductCardHandlers) => JSX.Element 
     className?: string,
     style?: React.CSSProperties,
     value?:number,
     onChange?:(args:IOnChangeArgs) => void,
+    initialValues?: valuesInitial;
+  }
+
+  export interface valuesInitial {
+    count?:number;
+    maxCount?: number;
   }
 
 
@@ -42,6 +49,7 @@ export interface IPropsProductCardComponent {
   export interface IProductContext {
     product: IProduct,
     counter: number,
+    maxCount?: number,
     increasyBy: (increment:number)=> void,
   }
 
@@ -52,4 +60,16 @@ export interface ProductCardHOCProps{
     Title: (Props: IProductTitleProps) => JSX.Element;
     Image: (Props: IProductImageProps) => JSX.Element;
     Buttons: (Props:IProductButtonsProps) => JSX.Element;
+}
+
+
+
+export interface PorductCardHandlers {
+  count: number,
+  isMaxCountReached: boolean,
+  maxCount: number,
+  product: IProduct,
+
+  increasyBy: (value:number) => void,
+  reset: () => void
 }

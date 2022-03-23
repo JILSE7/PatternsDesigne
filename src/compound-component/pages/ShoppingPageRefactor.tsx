@@ -1,50 +1,56 @@
 import ProductCard from '../components/ProductCardComponents/';
-import { IProduct} from '../interfaces/ProductInterfaces';
+import { products } from '../hooks/useShoppingCart';
+
 import '../styles/custom-styles.css';
-import useShoppingCart from '../hooks/useShoppingCart';
 
 
 
+const product = products[0]
 
 
 const ShoppingPageRefactor = () => {
 
 
-    const {products,shoppingCart,handleCartChange} = useShoppingCart()
+
 
   return (
     <div >
-      ShoppingPage
+      
 
       <div style={{display:"flex", width:"80vw", flexFlow:"row wrap", justifyContent:"space-around"}}>
    
 
-        {/*MOSTRAR PRODUCTOS */}
-        {products.map((product,i) => {
-          return (
-            <ProductCard product={product} value={shoppingCart[product.id]?.count || 0} className="bg-dark" key={i + product.id} onChange={(evento) => handleCartChange(evento)}>
-              <ProductCard.Image className='custom-image'/>
-              <ProductCard.Title title="Coffe Cup" className='text-white'/>
-              <ProductCard.Buttons className='text-white' style={{justifyContent:"center"}}/>
+
+            <ProductCard product={product} className="bg-dark" initialValues={{count:4, maxCount:10}}>
+              {
+                ({count,increasyBy,isMaxCountReached,reset}) => {
+                  //console.log(initialValues, "jajajaj");
+                  return(
+                    <>
+                      <ProductCard.Image className='custom-image'/>
+                      <ProductCard.Title title="Coffe Cup" className='text-white'/>
+                      <ProductCard.Buttons className='text-white' style={{justifyContent:"center"}}/>
+                      <button onClick={() => reset()}>reset</button>
+
+                      <button onClick={() => increasyBy(+2)}>-2</button>
+
+                      {
+                          !isMaxCountReached && <button onClick={() => increasyBy(+2)}>+2</button>
+                      }
+
+                      <span>{count}</span>
+
+
+                    </>
+                )
+                }
+              }
             </ProductCard> 
-          )
-        })}
+          
+
         
       </div>
-      {/*MOSTRAR CARRITO */}
-      <div className='shopping-center'>
-        {
-          Object.entries(shoppingCart).map((product,i) => {
-            return(
-              <ProductCard product={product[1]} value={product[1].count} className="bg-dark" key={i + product[0]}  style={{width:"100px"}} onChange={(evento) => handleCartChange(evento)}>
-                <ProductCard.Image className='custom-image'/>
-                <ProductCard.Title title="Coffe Cup" className='text-white'/>
-                <ProductCard.Buttons className='text-white' style={{justifyContent:"center"}}/>
-            </ProductCard> 
-            )
-          })
-        }
-      </div>
+     
       
 
     </div>

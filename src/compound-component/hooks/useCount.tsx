@@ -1,19 +1,23 @@
 import { useEffect, useRef, useState } from "react";
-import { IOnChangeArgs, IProduct } from '../interfaces/ProductInterfaces';
+import { IOnChangeArgs, IProduct, valuesInitial } from '../interfaces/ProductInterfaces';
 
 interface Props{
     product:IProduct,
     onChange?: (args:IOnChangeArgs) => void;
-    value?:number
+    value?:number,
+    initialValues?: valuesInitial
 
 }
 
 
-const useCount = ({onChange, product, value=0}: Props) => {
+const useCount = ({onChange, product, value=0, initialValues}: Props) => {
 
-    const [counter, setcounter] = useState(value);
+    console.log(initialValues);
+
+    const [counter, setcounter] = useState(initialValues?.count || value);
 
     const isControlled = useRef(!!onChange);
+    const isMounted = useRef<boolean>(false)
 
 
     
@@ -23,21 +27,47 @@ const useCount = ({onChange, product, value=0}: Props) => {
             
             return onChange!({count:value,product})
         }
-        const newValue = Math.max(counter + value , 0);
-        
-        setcounter(newValue);
 
-        onChange && onChange({count:newValue,product})
-    }
+        let newValue = initialValues?.maxCount ? 
+                        Math.min(Math.max(counter + value , 0), initialValues?.maxCount!) : //minimo, toma el mas chico de los dos lados (4,5) = 4 , (5,4) = 4
+                        Math.max(counter + value , 0);
+
+        
+             
+            
+            setcounter(newValue);
     
+            onChange && onChange({count:newValue,product})
+            
+
+    }
+
+    useEffect(() => {
+        isMounted.current = true;
+    }, []);
     
     useEffect(() => {
-        setcounter(value);
+
+        if(isMounted.current){
+            console.log("ya me monte");
+            setcounter(initialValues?.count || value);
+            return
+        }
+
+        console.log("aun no he terminado de montarm");
+        
     }, [value])
+
+
+    
+    
 
     return {
         counter,
-        increasyBy
+        increasyBy,
+        maxCount:initialValues?.maxCount,
+        isMaxCountReached: !!initialValues?.maxCount && initialValues.maxCount === counter,
+        reset: () => setcounter(initialValues?.count || value)
     }
 }
 

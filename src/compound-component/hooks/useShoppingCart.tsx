@@ -19,7 +19,7 @@ const product = {
     img: "/coffee-mug2.png"
   }
   
-  let products:IProduct[] = [product, product2];
+  export let products:IProduct[] = [product, product2];
 
 const useShoppingCart = () => {
   //{[key]:{propuct}}
