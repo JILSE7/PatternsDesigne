@@ -21,26 +21,16 @@ const ShoppingPageRefactor = () => {
    
 
 
-            <ProductCard product={product} className="bg-dark" initialValues={{count:4, maxCount:10}}>
+            <ProductCard product={product} initialValues={{count:4, maxCount:10}}>
               {
                 ({count,increasyBy,isMaxCountReached,reset}) => {
-                  //console.log(initialValues, "jajajaj");
+
                   return(
                     <>
-                      <ProductCard.Image className='custom-image'/>
-                      <ProductCard.Title title="Coffe Cup" className='text-white'/>
-                      <ProductCard.Buttons className='text-white' style={{justifyContent:"center"}}/>
-                      <button onClick={() => reset()}>reset</button>
-
-                      <button onClick={() => increasyBy(+2)}>-2</button>
-
-                      {
-                          !isMaxCountReached && <button onClick={() => increasyBy(+2)}>+2</button>
-                      }
-
-                      <span>{count}</span>
-
-
+                      <ProductCard.Image />
+                      <ProductCard.Title />
+                      <ProductCard.Buttons />
+                  
                     </>
                 )
                 }

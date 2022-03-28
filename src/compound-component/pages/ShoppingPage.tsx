@@ -70,7 +70,7 @@ const ShoppingPage = () => {
    
 
         {/*MOSTRAR PRODUCTOS */}
-        {products.map((product,i) => {
+        {/* {products.map((product,i) => {
           return (
             <ProductCard product={product} value={shoppingCart[product.id]?.count || 0} className="bg-dark" key={i + product.id} onChange={(evento) => handleCartChange(evento)}>
               <ProductCard.Image className='custom-image'/>
@@ -78,12 +78,12 @@ const ShoppingPage = () => {
               <ProductCard.Buttons className='text-white' style={{justifyContent:"center"}}/>
             </ProductCard> 
           )
-        })}
+        })} */}
         
       </div>
       
       <div className='shopping-center'>
-        {
+       {/*  {
           Object.entries(shoppingCart).map((product,i) => {
             return(
               <ProductCard product={product[1]} value={product[1].count} className="bg-dark" key={i + product[0]}  style={{width:"100px"}} onChange={(evento) => handleCartChange(evento)}>
@@ -93,7 +93,7 @@ const ShoppingPage = () => {
             </ProductCard> 
             )
           })
-        }
+        } */}
       </div>
       
         {
