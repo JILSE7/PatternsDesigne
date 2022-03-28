@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import icon from '../../favicon.svg';
+import icon from './favicon.svg';
 
-const Nav = ({children}:any) => {
+export const Nav = ({children}:any) => {
   return (
     <div className='main-layout'>
         <nav>
@@ -26,5 +26,3 @@ const Nav = ({children}:any) => {
     </div>
   )
 }
-
-export default Nav
