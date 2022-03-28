@@ -10,7 +10,7 @@ export const Nav = ({children}:any) => {
             <img src={icon} alt='icon'/>
             <ul>
                 <li>
-                    <NavLink to={"/"} className={({isActive}) => isActive? 'nav-active' : '' }>Home</NavLink>
+                    <NavLink to={"/register"} className={({isActive}) => isActive? 'nav-active' : '' }>Register</NavLink>
                 </li>
                 <li>
                     <NavLink to={"/about"} className={({isActive}) => isActive? 'nav-active' : '' }>About</NavLink>

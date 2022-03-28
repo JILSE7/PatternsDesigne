@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter,Routes, Route, Navigate } from 'react-router-dom'
+import RegisterPage from '../03-forms/pages/RegisterPage';
 import { Nav } from '../Nav';
 
 import About from '../screens/About'
@@ -11,11 +12,11 @@ const Navigation = () => {
     <BrowserRouter>
         <Nav>
         <Routes>
-            <Route path="/" element={<h1>f</h1>} />
+            <Route path="/register" element={<RegisterPage/>} />
             <Route path="about" element={<About />} />
             <Route path="users" element={<Users />} />
 
-            <Route path="/*" element={<Navigate to={"/"} replace/>} />
+            <Route path="/*" element={<Navigate to={"/register"} replace/>} />
 
 
       </Routes>
