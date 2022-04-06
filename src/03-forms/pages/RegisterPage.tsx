@@ -54,7 +54,7 @@ const RegisterPage = () => {
             {password !== repeatPassword && <span>Contraseñas diferentes</span>}
             <input type="password" placeholder="repeatpassword" name='repeatPassword' value={repeatPassword} onChange={(e) => handleChange(e)}/>
             {repeatPassword.trim().length < 6 && repeatPassword.trim().length > 0 && <span>Contraseña de 6 letras</span>}
-            {repeatPassword.trim().length &&  password !== repeatPassword && <span>Contraseñas diferentes</span>}
+            {repeatPassword.trim().length < 6 &&  password !== repeatPassword && <span>Contraseñas diferentes</span>}
 
             <button type="submit">Crear</button>
         </form>

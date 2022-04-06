@@ -1,10 +1,12 @@
-import React from 'react'
+
 import { BrowserRouter,Routes, Route, Navigate } from 'react-router-dom'
-import RegisterPage from '../03-forms/pages/RegisterPage';
+import {RegisterPage,FormikPage} from '../03-forms/pages/';
 import { Nav } from '../Nav';
 
 import About from '../screens/About'
 import Users from '../screens/Users';
+import {FormikPageYup,FormikComponents,FormikAbstraction} from '../03-forms/pages';
+
 
 
 const Navigation = () => {
@@ -12,7 +14,11 @@ const Navigation = () => {
     <BrowserRouter>
         <Nav>
         <Routes>
+            <Route path='/formik' element={<FormikPage/>}/>
             <Route path="/register" element={<RegisterPage/>} />
+            <Route path="/formikYup" element={<FormikPageYup/>} />
+            <Route path="/formikComponents" element={<FormikComponents/>} />
+            <Route path="/formikAbstraction" element={<FormikAbstraction/>} />
             <Route path="about" element={<About />} />
             <Route path="users" element={<Users />} />
 

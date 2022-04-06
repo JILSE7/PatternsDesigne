@@ -1,7 +1,8 @@
-import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 
 import icon from './favicon.svg';
+
 
 export const Nav = ({children}:any) => {
   return (
@@ -17,6 +18,18 @@ export const Nav = ({children}:any) => {
                 </li>
                 <li>
                     <NavLink to={"/users"}className={({isActive}) => isActive? 'nav-active' : '' }>Users</NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/formik"}className={({isActive}) => isActive? 'nav-active' : '' }>Formik</NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/formikYup"}className={({isActive}) => isActive? 'nav-active' : '' }>Formik Yup</NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/formikComponents"}className={({isActive}) => isActive? 'nav-active' : '' }>FormikComponents</NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/formikAbstraction"}className={({isActive}) => isActive? 'nav-active' : '' }>Formik Abstraction</NavLink>
                 </li>
             </ul>
         </nav>
