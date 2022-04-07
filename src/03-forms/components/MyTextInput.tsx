@@ -4,7 +4,7 @@ interface IProps {
     name:string,
     label:string,
     type?: 'text'|'email'|'password',
-    placeholder?: 'string',
+    placeholder?: string,
     [x:string]:any
 
 }
@@ -13,7 +13,7 @@ const MyTextInput = ({label, ...props}:IProps):JSX.Element => {
 
         const [field, meta] = useField(props);
 
-        console.log(meta);
+        //console.log(meta);
 
   return (
     <>

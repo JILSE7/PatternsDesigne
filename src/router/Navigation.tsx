@@ -5,7 +5,8 @@ import { Nav } from '../Nav';
 
 import About from '../screens/About'
 import Users from '../screens/Users';
-import {FormikPageYup,FormikComponents,FormikAbstraction} from '../03-forms/pages';
+import {FormikPageYup,FormikComponents,FormikAbstraction,RegisterFormikPage, DinamikForm} from '../03-forms/pages';
+
 
 
 
@@ -16,9 +17,11 @@ const Navigation = () => {
         <Routes>
             <Route path='/formik' element={<FormikPage/>}/>
             <Route path="/register" element={<RegisterPage/>} />
+            <Route path="/registerFormikPage" element={<RegisterFormikPage/>} />
             <Route path="/formikYup" element={<FormikPageYup/>} />
             <Route path="/formikComponents" element={<FormikComponents/>} />
             <Route path="/formikAbstraction" element={<FormikAbstraction/>} />
+            <Route path="/dinamycForm" element={<DinamikForm/>} />
             <Route path="about" element={<About />} />
             <Route path="users" element={<Users />} />
 
